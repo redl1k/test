@@ -1,2 +1,2 @@
 awdawd
-password=secret
+password=s3cr3t
