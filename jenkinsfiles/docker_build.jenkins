@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    environment {
+        REGISTRY_IMAGE = "${env.CI_REGISTRY_IMAGE}:${env.CI_PIPELINE_ID}"
+        REGISTRY = "${env.CI_REGISTRY}"
+        REGISTRY_USER = "${env.CI_REGISTRY_USER}"
+        REGISTRY_PASSWORD = "${env.CI_REGISTRY_PASSWORD}"
+    }
+    
+    
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    echo 'Building Docker image...'
+                    }
+                }
+            }  
+    }
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
